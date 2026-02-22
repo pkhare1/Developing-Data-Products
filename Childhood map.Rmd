@@ -1,0 +1,28 @@
+---
+title: "Childhood map"
+author: "Pratik A. Khare"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo = FALSE}
+library(leaflet)
+set.seed(2016-04-25)
+df <- data.frame(
+  lat = c(19.175784,19.038905,19.081206,19.027007,19.063823),
+  lng = c(72.966613,72.845335,72.837105,72.845117,72.835776),
+  popup_text = c("Neelam Nagar: 8 years","Victory House: 10 years","Podar: 6 years","Ruparel: 2 years","TSEC: 4 years"))
+
+df %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(
+    lng = ~lng,
+    lat = ~lat,
+    popup = ~popup_text
+  )
+```
