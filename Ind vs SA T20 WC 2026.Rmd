@@ -1,0 +1,46 @@
+---
+title: "Ind vs SA T20 WC 2026"
+author: "Pratik A. Khare"
+date: "`r Sys.Date()`"
+output:
+  slidy_presentation:
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+suppressPackageStartupMessages(library(plotly))
+```
+
+## Run rate chart
+```{r plot, fig.keep='all', out.width='100%'}
+RR <- list(
+  sa = c(6,9,1,11,10,11,4,17,11,15,12,17,6,10,8,5,7,3,20),
+  ind = c(8,10,3,3,2,11,5,4,6,11,7,6,5,2,13,1,3,6,0)
+)
+
+p <- plot_ly() %>%
+  add_trace(
+    x = seq_along(RR$sa),
+    y = RR$sa,
+    type = "scatter",
+    mode = "lines+markers",
+    name = "South Africa"
+  ) %>%
+  add_trace(
+    x = seq_along(RR$ind),
+    y = RR$ind,
+    type = "scatter",
+    mode = "lines+markers",
+    name = "India"
+  ) %>%
+  layout(
+    title = "Run Rate Comparison",
+    xaxis = list(title ="Overs"),
+    yaxis = list(title ="Run Rate"),
+    width = 700,
+    height = 450
+  )
+
+print(p)
+```
