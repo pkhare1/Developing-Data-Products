@@ -2,24 +2,21 @@
 title: "Ind vs SA T20 WC 2026"
 author: "Pratik A. Khare"
 date: "`r Sys.Date()`"
-output:
-  slidy_presentation:
-    self_contained: true
+output: slidy_presentation
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 suppressPackageStartupMessages(library(plotly))
 ```
 
 ## Run rate chart
-```{r plot, fig.keep='all', out.width='100%'}
+```{r}
 RR <- list(
-  sa = c(6,9,1,11,10,11,4,17,11,15,12,17,6,10,8,5,7,3,20),
-  ind = c(8,10,3,3,2,11,5,4,6,11,7,6,5,2,13,1,3,6,0)
+  sa = c(4,6,9,1,11,10,11,4,17,11,15,12,17,6,10,8,5,7,3,20),
+  ind = c(5,8,10,3,3,2,11,5,4,6,11,7,6,5,2,13,1,3,6,0)
 )
 
-p <- plot_ly() %>%
+plot_ly() %>%
   add_trace(
     x = seq_along(RR$sa),
     y = RR$sa,
@@ -37,10 +34,6 @@ p <- plot_ly() %>%
   layout(
     title = "Run Rate Comparison",
     xaxis = list(title ="Overs"),
-    yaxis = list(title ="Run Rate"),
-    width = 700,
-    height = 450
+    yaxis = list(title ="Run Rate")
   )
-
-print(p)
 ```
