@@ -1,5 +1,6 @@
 library(shiny)
 library(readxl)
+library(nnet)
 
 data <- read_excel("data/Ind vs opponent results.xlsx")
 df <- subset(data, Result != "NR")
